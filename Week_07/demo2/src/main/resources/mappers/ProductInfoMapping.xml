@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geek.study.mapper.ProductInfoMapper">
+
+    <select id="queryProductInfo" resultType="com.geek.study.bo.ProductInfo">
+        select
+          	id,
+            product_id        as productId,
+            product_code      as productCode,
+	        product_name      as productName,
+            bar_code		  as barCode,
+	        price,
+	        push_status	      as pushStatus,
+	        audit_status      as auditStatus,
+            production_date   as productionDate,
+	        shelf_life        as shelfLife,
+            descript,
+            create_time       as createTime,
+            update_time       as updateTime
+        from
+          product_info order by create_time desc limit 1
+    </select>
+
+    <select id="updateProductInfo" resultType="com.geek.study.bo.ProductInfo">
+        select
+          	id,
+            product_id        as productId,
+            product_code      as productCode,
+	        product_name      as productName,
+            bar_code		  as barCode,
+	        price,
+	        push_status	      as pushStatus,
+	        audit_status      as auditStatus,
+            production_date   as productionDate,
+	        shelf_life        as shelfLife,
+            descript,
+            create_time       as createTime,
+            update_time       as updateTime
+        from
+          product_info order by create_time desc limit 1
+    </select>
+
+    <insert id="saveNewProductInfo" parameterType="com.geek.study.bo.ProductInfo">
+        insert into product_info (product_id,product_code,product_name,bar_code,price,push_status,audit_status
+        ,production_date,shelf_life,descript)
+        values (#{productId},#{productCode},#{productName},#{barCode},#{price},#{pushStatus},#{auditStatus}
+        ,#{productionDate},#{shelfLife},#{descript})
+    </insert>
+</mapper>
